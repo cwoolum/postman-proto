@@ -1,0 +1,1930 @@
+{
+  "info": {
+    "_postman_id": "5138fd4b-14cf-4589-aa32-3a9368aad359",
+    "name": "Petstore Test Collection",
+    "description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\n\nContact Support:\n Email: apiteam@swagger.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "pet",
+      "item": [
+        {
+          "name": "{pet Id}",
+          "item": [
+            {
+              "name": "Find pet by ID",
+              "_postman_id": "42895986-9735-4a1d-a916-c1d7b09a7ac7",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "api_key",
+                    "value": ""
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pet/:petId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pet",
+                    ":petId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8866f9b1-0745-4353-a269-04f690db1a31",
+                      "key": "petId",
+                      "value": "<long>",
+                      "type": "string",
+                      "description": "(Required) ID of pet to return"
+                    }
+                  ]
+                },
+                "description": "Returns a single pet"
+              },
+              "response": [
+                {
+                  "id": "2da680d5-6d33-449d-92dc-93470fe5f8b5",
+                  "name": "Pet not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/pet/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                },
+                {
+                  "id": "c3c173b2-3047-4016-b86a-516573364f13",
+                  "name": "Invalid ID supplied",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/pet/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                },
+                {
+                  "id": "e3d27308-28cb-4f6d-9e47-4e98bc31023c",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/pet/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n \"name\": \"doggie\",\n \"photoUrls\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"id\": \"<long>\",\n \"category\": {\n  \"id\": \"<long>\",\n  \"name\": \"<string>\"\n },\n \"tags\": [\n  {\n   \"id\": \"<long>\",\n   \"name\": \"<string>\"\n  },\n  {\n   \"id\": \"<long>\",\n   \"name\": \"<string>\"\n  }\n ],\n \"status\": \"<string>\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Updates a pet in the store with form data",
+              "_postman_id": "f2ad3752-5bbd-4ff6-a45c-818c109f9854",
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": {}
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "name",
+                      "value": "<string>",
+                      "description": "Updated name of the pet"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>",
+                      "description": "Updated status of the pet"
+                    }
+                  ],
+                  "options": {
+                    "urlencoded": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/pet/:petId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pet",
+                    ":petId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b8950583-7514-4c8b-b8d6-3b782303d6d6",
+                      "key": "petId",
+                      "value": "<long>",
+                      "type": "string",
+                      "description": "(Required) ID of pet that needs to be updated"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "6bb2f572-d16e-495d-bbcc-ef8077a1144b",
+                  "name": "Invalid input",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": {
+                            "content": "Updated name of the pet",
+                            "type": "text/plain"
+                          },
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": {
+                            "content": "Updated status of the pet",
+                            "type": "text/plain"
+                          },
+                          "key": "status",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pet/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Method Not Allowed",
+                  "code": 405,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "Deletes a pet",
+              "_postman_id": "49bb34a9-63eb-494a-8721-b6f8ffcfd8ee",
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": {}
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "api_key",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pet/:petId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pet",
+                    ":petId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "35c62934-eda8-4690-9d5b-b980f8ec0940",
+                      "key": "petId",
+                      "value": "<long>",
+                      "type": "string",
+                      "description": "(Required) Pet id to delete"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "7e38a3fd-369b-434d-a3f7-53acbe6dc0af",
+                  "name": "Invalid ID supplied",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/pet/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                },
+                {
+                  "id": "cd008a0b-7d15-4e7e-8f03-e94a0460cd9d",
+                  "name": "Pet not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "api_key",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "api_key",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pet/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "uploads an image",
+              "_postman_id": "16f634cf-f87f-4c9b-b9bf-d6e4d48d088a",
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": {}
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "additionalMetadata",
+                      "value": "<string>",
+                      "description": "Additional data to pass to server"
+                    },
+                    {
+                      "key": "file",
+                      "value": "<binary>",
+                      "description": "file to upload"
+                    }
+                  ],
+                  "options": {
+                    "formdata": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/pet/:petId/uploadImage",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pet",
+                    ":petId",
+                    "uploadImage"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4c57259d-d282-4de9-a39c-8c6836a3a1e3",
+                      "key": "petId",
+                      "value": "<long>",
+                      "type": "string",
+                      "description": "(Required) ID of pet to update"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "94f1919a-f180-4f32-8012-28c13dd80e37",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": {
+                            "content": "Additional data to pass to server",
+                            "type": "text/plain"
+                          },
+                          "key": "additionalMetadata",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": {
+                            "content": "file to upload",
+                            "type": "text/plain"
+                          },
+                          "key": "file",
+                          "value": "<binary>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pet/:petId/uploadImage",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pet",
+                        ":petId",
+                        "uploadImage"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n \"code\": \"<integer>\",\n \"type\": \"<string>\",\n \"message\": \"<string>\"\n}"
+                }
+              ]
+            }
+          ],
+          "_postman_id": "d39fe758-0af3-4b89-938c-1952ba45e43c",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Add a new pet to the store",
+          "_postman_id": "2defaeef-e637-4620-af4a-5ed16242c7c6",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": {}
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"<string>\",\n    \"photoUrls\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"id\": \"<long>\",\n    \"category\": {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"tags\": [\n        {\n            \"id\": \"<long>\",\n            \"name\": \"<string>\"\n        },\n        {\n            \"id\": \"<long>\",\n            \"name\": \"<string>\"\n        }\n    ],\n    \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{baseUrl}}/pet"
+          },
+          "response": [
+            {
+              "id": "545e458f-7103-4a06-afaa-05629903f3e1",
+              "name": "Invalid input",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": "{{baseUrl}}/pet"
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "Update an existing pet",
+          "_postman_id": "6fcb092a-5e5c-48b3-8659-57aedada0e03",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": {}
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"<string>\",\n    \"photoUrls\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"id\": \"<long>\",\n    \"category\": {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n    },\n    \"tags\": [\n        {\n            \"id\": \"<long>\",\n            \"name\": \"<string>\"\n        },\n        {\n            \"id\": \"<long>\",\n            \"name\": \"<string>\"\n        }\n    ],\n    \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{baseUrl}}/pet"
+          },
+          "response": [
+            {
+              "id": "280095f1-a901-48fa-81c5-786f44f69216",
+              "name": "Pet not found",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "url": "{{baseUrl}}/pet"
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            },
+            {
+              "id": "35e1c541-1d48-4126-aaa7-cb5ec84a2245",
+              "name": "Validation exception",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "url": "{{baseUrl}}/pet"
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            },
+            {
+              "id": "59a7c136-6cd5-4edb-a621-4fa307a6dec6",
+              "name": "Invalid ID supplied",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "url": "{{baseUrl}}/pet"
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "Finds Pets by status",
+          "_postman_id": "4ebb7afb-496d-4341-8f3b-c2e9c5c60ea0",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": {}
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pet/findByStatus?status=available,available",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pet",
+                "findByStatus"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Status values that need to be considered for filter",
+                  "key": "status",
+                  "value": "available,available"
+                }
+              ]
+            },
+            "description": "Multiple status values can be provided with comma separated strings"
+          },
+          "response": [
+            {
+              "id": "50706bab-a0a2-4a53-9adc-826afd503ae1",
+              "name": "successful operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/pet/findByStatus?status=available,available",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pet",
+                    "findByStatus"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "available,available"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n {\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n   \"id\": \"<long>\",\n   \"name\": \"<string>\"\n  },\n  \"tags\": [\n   {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n   },\n   {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n   }\n  ],\n  \"status\": \"<string>\"\n },\n {\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n   \"id\": \"<long>\",\n   \"name\": \"<string>\"\n  },\n  \"tags\": [\n   {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n   },\n   {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n   }\n  ],\n  \"status\": \"<string>\"\n }\n]"
+            },
+            {
+              "id": "69b3a487-4fdc-4a15-906c-0c7a47ee6d09",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/pet/findByStatus?status=available,available",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pet",
+                    "findByStatus"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "available,available"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "Finds Pets by tags",
+          "_postman_id": "f2adc71a-042a-4ccd-b675-8cb8e4747369",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": {}
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pet/findByTags?tags=<string>,<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pet",
+                "findByTags"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Tags to filter by",
+                  "key": "tags",
+                  "value": "<string>,<string>"
+                }
+              ]
+            },
+            "description": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing."
+          },
+          "response": [
+            {
+              "id": "0745979d-1b32-45a4-9635-4ee4d10e0dcb",
+              "name": "Invalid tag value",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/pet/findByTags?tags=<string>,<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pet",
+                    "findByTags"
+                  ],
+                  "query": [
+                    {
+                      "key": "tags",
+                      "value": "<string>,<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            },
+            {
+              "id": "480b2972-50d7-4b84-8ad7-41ddee6ba246",
+              "name": "successful operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/pet/findByTags?tags=<string>,<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pet",
+                    "findByTags"
+                  ],
+                  "query": [
+                    {
+                      "key": "tags",
+                      "value": "<string>,<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n {\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n   \"id\": \"<long>\",\n   \"name\": \"<string>\"\n  },\n  \"tags\": [\n   {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n   },\n   {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n   }\n  ],\n  \"status\": \"<string>\"\n },\n {\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n   \"id\": \"<long>\",\n   \"name\": \"<string>\"\n  },\n  \"tags\": [\n   {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n   },\n   {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n   }\n  ],\n  \"status\": \"<string>\"\n }\n]"
+            }
+          ]
+        }
+      ],
+      "_postman_id": "3d000a7b-231b-4fd1-bed4-1ba1e1422bf2"
+    },
+    {
+      "name": "store",
+      "item": [
+        {
+          "name": "order",
+          "item": [
+            {
+              "name": "{order Id}",
+              "item": [
+                {
+                  "name": "Find purchase order by ID",
+                  "_postman_id": "5b715ce5-6fc7-4f02-9c34-fe40d97ee28d",
+                  "request": {
+                    "auth": {
+                      "type": "noauth"
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/store/order/:orderId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "store",
+                        "order",
+                        ":orderId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b8538b83-d3d8-439e-8c21-2ebc356509f9",
+                          "key": "orderId",
+                          "value": "<long>",
+                          "type": "string",
+                          "description": "(Required) ID of pet that needs to be fetched"
+                        }
+                      ]
+                    },
+                    "description": "For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions"
+                  },
+                  "response": [
+                    {
+                      "id": "2af06c85-dcf3-48c0-9be7-7a27dff91a69",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/store/order/:orderId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n \"id\": \"<long>\",\n \"petId\": \"<long>\",\n \"quantity\": \"<integer>\",\n \"shipDate\": \"<dateTime>\",\n \"status\": \"<string>\",\n \"complete\": \"<boolean>\"\n}"
+                    },
+                    {
+                      "id": "5485a723-c4c2-45ef-90a6-82bf219d32fa",
+                      "name": "Invalid ID supplied",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/store/order/:orderId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": ""
+                    },
+                    {
+                      "id": "e7d2b794-3379-4d3e-af8a-542e5a62da15",
+                      "name": "Order not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/store/order/:orderId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "Delete purchase order by ID",
+                  "_postman_id": "bd94101c-dbb3-49a7-a12c-c919036eb0cb",
+                  "request": {
+                    "auth": {
+                      "type": "noauth"
+                    },
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/store/order/:orderId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "store",
+                        "order",
+                        ":orderId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0e2a0e61-9856-491a-a078-9bbe1b5d2990",
+                          "key": "orderId",
+                          "value": "<long>",
+                          "type": "string",
+                          "description": "(Required) ID of the order that needs to be deleted"
+                        }
+                      ]
+                    },
+                    "description": "For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors"
+                  },
+                  "response": [
+                    {
+                      "id": "9b17d1aa-baee-4c35-b1f1-c56becd2dcc3",
+                      "name": "Order not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/store/order/:orderId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": ""
+                    },
+                    {
+                      "id": "c516a2fd-e921-4b9f-b539-5f6e5a88f382",
+                      "name": "Invalid ID supplied",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/store/order/:orderId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orderId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": ""
+                    }
+                  ]
+                }
+              ],
+              "_postman_id": "f8a47340-3c6f-4d02-8039-37ee0581cd13",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "Place an order for a pet",
+              "_postman_id": "3c1d211f-2375-47a2-8093-f8165d36cde9",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": \"<long>\",\n    \"petId\": \"<long>\",\n    \"quantity\": \"<integer>\",\n    \"shipDate\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"complete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": "{{baseUrl}}/store/order"
+              },
+              "response": [
+                {
+                  "id": "07b18e28-ee34-49cb-8efb-36411ff6f6a5",
+                  "name": "Invalid Order",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"<long>\",\n    \"petId\": \"<long>\",\n    \"quantity\": \"<integer>\",\n    \"shipDate\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"complete\": \"<boolean>\"\n}"
+                    },
+                    "url": "{{baseUrl}}/store/order"
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                },
+                {
+                  "id": "db650552-4a9a-4210-b68b-003a29b93f63",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"<long>\",\n    \"petId\": \"<long>\",\n    \"quantity\": \"<integer>\",\n    \"shipDate\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"complete\": \"<boolean>\"\n}"
+                    },
+                    "url": "{{baseUrl}}/store/order"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n \"id\": \"<long>\",\n \"petId\": \"<long>\",\n \"quantity\": \"<integer>\",\n \"shipDate\": \"<dateTime>\",\n \"status\": \"<string>\",\n \"complete\": \"<boolean>\"\n}"
+                }
+              ]
+            }
+          ],
+          "_postman_id": "82f2e5d5-d71b-4a51-ba50-b9ba6b84d64a",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Returns pet inventories by status",
+          "_postman_id": "6e38f166-fe96-49ea-a38a-da1dc78b58e9",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "api_key",
+                "value": ""
+              }
+            ],
+            "url": "{{baseUrl}}/store/inventory",
+            "description": "Returns a map of status codes to quantities"
+          },
+          "response": [
+            {
+              "id": "3fa988ca-a0ac-47cd-bb0e-d6b4b2fdbdc7",
+              "name": "successful operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/store/inventory"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "\"<object>\""
+            }
+          ]
+        }
+      ],
+      "_postman_id": "7a67fc8e-4aba-4e83-8f62-19de6b4a4ce8"
+    },
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "{username}",
+          "item": [
+            {
+              "name": "Get user by user name",
+              "_postman_id": "3a754a07-2374-4029-9c1e-526b0a02990a",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/user/:username",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    ":username"
+                  ],
+                  "variable": [
+                    {
+                      "id": "eb6a1230-ffb9-4e6a-ba3e-fd469f677932",
+                      "key": "username",
+                      "value": "<string>",
+                      "type": "string",
+                      "description": "(Required) The name that needs to be fetched. Use user1 for testing. "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "5c266d62-26df-4bc9-b08e-f58b405c7eb0",
+                  "name": "Invalid username supplied",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:username",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "variable": [
+                        {
+                          "key": "username"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                },
+                {
+                  "id": "e3c2e0f1-be25-46bc-9c7d-3c2ee40a17af",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:username",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "variable": [
+                        {
+                          "key": "username"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n \"id\": \"<long>\",\n \"username\": \"<string>\",\n \"firstName\": \"<string>\",\n \"lastName\": \"<string>\",\n \"email\": \"<string>\",\n \"password\": \"<string>\",\n \"phone\": \"<string>\",\n \"userStatus\": \"<integer>\"\n}"
+                },
+                {
+                  "id": "edebdc39-1091-45d0-9ccf-c5e7294bc65c",
+                  "name": "User not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:username",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "variable": [
+                        {
+                          "key": "username"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "Updated user",
+              "_postman_id": "9ad359ec-0533-4a1a-97cd-850b546c5ed8",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {}
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/:username",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    ":username"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c2c67a3d-1e75-40a9-b13b-4e2812d19c2e",
+                      "key": "username",
+                      "value": "<string>",
+                      "type": "string",
+                      "description": "(Required) name that need to be updated"
+                    }
+                  ]
+                },
+                "description": "This can only be done by the logged in user."
+              },
+              "response": [
+                {
+                  "id": "8a4f1560-0177-4e7f-8b72-ae71b3b56f38",
+                  "name": "User not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:username",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "variable": [
+                        {
+                          "key": "username"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                },
+                {
+                  "id": "9e3c5440-0c80-4b2b-b41f-d758a62dc285",
+                  "name": "Invalid user supplied",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:username",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "variable": [
+                        {
+                          "key": "username"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "Delete user",
+              "_postman_id": "47466101-dfcb-4e75-9bff-82abda2b6bd0",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/user/:username",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    ":username"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6c2c9673-a18b-450b-bfeb-bf3fd58a37c6",
+                      "key": "username",
+                      "value": "<string>",
+                      "type": "string",
+                      "description": "(Required) The name that needs to be deleted"
+                    }
+                  ]
+                },
+                "description": "This can only be done by the logged in user."
+              },
+              "response": [
+                {
+                  "id": "0c509add-c9c4-4571-b031-a6a9c356bebf",
+                  "name": "User not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:username",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "variable": [
+                        {
+                          "key": "username"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                },
+                {
+                  "id": "28d9bfce-6478-4a99-abed-de36d4e66414",
+                  "name": "Invalid username supplied",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:username",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "variable": [
+                        {
+                          "key": "username"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": ""
+                }
+              ]
+            }
+          ],
+          "_postman_id": "697f5f52-e484-4bbd-a503-32bf10d6caa3",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Create user",
+          "_postman_id": "fa2a8fe2-6519-47aa-8172-024a1abbce49",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{baseUrl}}/user",
+            "description": "This can only be done by the logged in user."
+          },
+          "response": [
+            {
+              "id": "6f62dc7c-45f0-45fb-8a06-9744ceec3b04",
+              "name": "successful operation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n}"
+                },
+                "url": "{{baseUrl}}/user"
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "Logs user into the system",
+          "_postman_id": "cbfa3fd6-0800-4d98-b1c2-803c9a8f27f9",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/user/login?username=<string>&password=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "login"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The user name for login",
+                  "key": "username",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The password for login in clear text",
+                  "key": "password",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a0af0045-5531-4854-b1fc-17e155a43af6",
+              "name": "successful operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/user/login?username=<string>&password=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "login"
+                  ],
+                  "query": [
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Expires-After",
+                  "value": "<dateTime>",
+                  "description": "date in UTC when token expires"
+                },
+                {
+                  "key": "X-Rate-Limit",
+                  "value": "<integer>",
+                  "description": "calls per hour allowed by the user"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "\"<string>\""
+            },
+            {
+              "id": "e4eb9c45-3849-4055-ad84-43ce9162ce55",
+              "name": "Invalid username/password supplied",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/user/login?username=<string>&password=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "login"
+                  ],
+                  "query": [
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "Logs out current logged in user session",
+          "_postman_id": "8f738acd-05e2-44ae-968f-18d2fd3e31d9",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/user/logout"
+          },
+          "response": [
+            {
+              "id": "c794afd9-1679-4114-9e96-b465909b13b0",
+              "name": "successful operation",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/user/logout"
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "Creates list of users with given input array",
+          "_postman_id": "6287635e-7e96-4ae0-b302-5234b567be9c",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"id\": \"<long>\",\n        \"username\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"password\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"userStatus\": \"<integer>\"\n    },\n    {\n        \"id\": \"<long>\",\n        \"username\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"password\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"userStatus\": \"<integer>\"\n    }\n]",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{baseUrl}}/user/createWithArray"
+          },
+          "response": [
+            {
+              "id": "b12d3daa-ae95-4de6-a8e7-37ef37216485",
+              "name": "successful operation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": "{{baseUrl}}/user/createWithArray"
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "Creates list of users with given input array",
+          "_postman_id": "bd896e51-357b-4c0e-8d86-e48030b3f635",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"id\": \"<long>\",\n        \"username\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"password\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"userStatus\": \"<integer>\"\n    },\n    {\n        \"id\": \"<long>\",\n        \"username\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"password\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"userStatus\": \"<integer>\"\n    }\n]",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{baseUrl}}/user/createWithList"
+          },
+          "response": [
+            {
+              "id": "7b4e5322-f693-4ab7-b857-f9fe4e9dd698",
+              "name": "successful operation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": "{{baseUrl}}/user/createWithList"
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": ""
+            }
+          ]
+        }
+      ],
+      "_postman_id": "57274783-5279-4d95-a311-e090093576bb"
+    }
+  ],
+  "variable": [
+    {
+      "id": "baseUrl",
+      "key": "baseUrl",
+      "value": "https://petstore.swagger.io/v2",
+      "type": "string"
+    }
+  ]
+}
