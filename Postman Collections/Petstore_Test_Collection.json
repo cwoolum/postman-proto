@@ -643,6 +643,9 @@
         {
           "name": "Finds Pets by status",
           "_postman_id": "4ebb7afb-496d-4341-8f3b-c2e9c5c60ea0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "oauth2",
@@ -651,7 +654,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/pet/findByStatus?status=available,available",
+              "raw": "{{baseUrl}}/pet/findByStatus?status=available,available&breed=German Shepherd",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -661,9 +664,14 @@
               ],
               "query": [
                 {
-                  "description": "(Required) Status values that need to be considered for filter",
                   "key": "status",
-                  "value": "available,available"
+                  "value": "available,available",
+                  "description": "(Required) Status values that need to be considered for filter"
+                },
+                {
+                  "key": "breed",
+                  "value": "German Shepherd",
+                  "type": "text"
                 }
               ]
             },
@@ -1666,6 +1674,9 @@
         {
           "name": "Logs user into the system",
           "_postman_id": "cbfa3fd6-0800-4d98-b1c2-803c9a8f27f9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "auth": {
               "type": "noauth"
@@ -1673,7 +1684,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/user/login?username=<string>&password=<string>",
+              "raw": "{{baseUrl}}/user/login?username=sometest&password=user",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1683,14 +1694,14 @@
               ],
               "query": [
                 {
-                  "description": "(Required) The user name for login",
                   "key": "username",
-                  "value": "<string>"
+                  "value": "sometest",
+                  "description": "(Required) The user name for login"
                 },
                 {
-                  "description": "(Required) The password for login in clear text",
                   "key": "password",
-                  "value": "<string>"
+                  "value": "user",
+                  "description": "(Required) The password for login in clear text"
                 }
               ]
             }
